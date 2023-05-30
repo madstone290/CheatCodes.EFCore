@@ -9,7 +9,7 @@ using Api.Data.Entities;
 
 namespace Api.Data.Configurations
 {
-    public class ReceiptConfiguration : IEntityTypeConfiguration<Receipt>
+    public class ReceiptConfig : IEntityTypeConfiguration<Receipt>
     {
         public void Configure(EntityTypeBuilder<Receipt> builder)
         {
