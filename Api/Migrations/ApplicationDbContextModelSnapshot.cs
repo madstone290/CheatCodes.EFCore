@@ -257,7 +257,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pen3",
                             Point = 10,
-                            Type = "Female"
+                            Type = "3rd"
                         },
                         new
                         {
@@ -273,7 +273,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Book5",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         },
                         new
                         {
@@ -281,7 +281,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Book6",
                             Point = 10,
-                            Type = "Male"
+                            Type = "3rd"
                         },
                         new
                         {
@@ -289,7 +289,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Book7",
                             Point = 10,
-                            Type = "Female"
+                            Type = "3rd"
                         },
                         new
                         {
@@ -297,7 +297,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bottle1",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         },
                         new
                         {
@@ -321,7 +321,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bottle4",
                             Point = 10,
-                            Type = "3rd"
+                            Type = "Female"
                         },
                         new
                         {
@@ -329,7 +329,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cup1",
                             Point = 10,
-                            Type = "Female"
+                            Type = "3rd"
                         },
                         new
                         {
@@ -361,7 +361,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pen12",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         },
                         new
                         {
@@ -385,7 +385,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Book12",
                             Point = 10,
-                            Type = "Male"
+                            Type = "3rd"
                         },
                         new
                         {
@@ -393,7 +393,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Book13",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         },
                         new
                         {
@@ -409,7 +409,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bottle11",
                             Point = 10,
-                            Type = "Male"
+                            Type = "3rd"
                         },
                         new
                         {
@@ -417,7 +417,7 @@ namespace Api.Migrations
                             Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bottle12",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         });
                 });
 
