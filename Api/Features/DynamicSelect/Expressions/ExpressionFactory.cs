@@ -1,7 +1,7 @@
-﻿using Api.Data.Entities;
+﻿using Api.Entities;
 using System.Linq.Expressions;
 
-namespace Api.Expressions
+namespace Api.Features.DynamicSelect.Expressions
 {
     public class ExpressionFactory
     {
@@ -15,7 +15,7 @@ namespace Api.Expressions
             MemberExpression idProperty = Expression.Property(userParameter, "Id");
             // + 10
             BinaryExpression addTenToId = Expression.Add(idProperty, Expression.Constant(10));
-            
+
             // Id = user.Id + 10
             MemberBinding idBinding = Expression.Bind(typeof(User).GetProperty("Id")!, addTenToId);
 

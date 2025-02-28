@@ -1,4 +1,4 @@
-﻿namespace Api.Data.Entities
+﻿namespace Api.Entities
 {
     public class Receipt
     {

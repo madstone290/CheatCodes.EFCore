@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Api.Data.Entities;
+using Api.Entities;
 
 namespace Api.Data
 {
@@ -17,10 +17,26 @@ namespace Api.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
+            var cars = new List<Car>()
+            {
+                new Car() { Id = 1, Name = "Car1", Model = "Model1", Year = 2023 },
+                new Car() { Id = 2, Name = "Car2", Model = "Model2", Year = 2023 },
+                new Car() { Id = 3, Name = "Car3", Model = "Model3", Year = 2023 }
+            };
+            modelBuilder.Entity<Car>().HasData(cars);
+
+            var bikes = new List<Bike>()
+            {
+                new Bike() { Id = 1, Name = "Bike1", Model = "Model1", Year = 2023 },
+                new Bike() { Id = 2, Name = "Bike2", Model = "Model2", Year = 2023 },
+                new Bike() { Id = 3, Name = "Bike3", Model = "Model3", Year = 2023 }
+            };
+            modelBuilder.Entity<Bike>().HasData(bikes);
+
             modelBuilder.Entity<User>().HasData(
-                new User() { Id = 1, Name = "Pen1", Point = 10, Created = new DateTime(2023, 1, 1) },
-                new User() { Id = 2, Name = "Pen2", Point = 10, Created = new DateTime(2023, 1, 1) },
-                new User() { Id = 3, Name = "Pen3", Point = 10, Created = new DateTime(2023, 2, 1) },
+                new User() { Id = 1, Name = "Pen1", Point = 10, Created = new DateTime(2023, 1, 1), Favorite = UserFavorite.Bike, },
+                new User() { Id = 2, Name = "Pen2", Point = 10, Created = new DateTime(2023, 1, 1), Favorite = UserFavorite.Car,  },
+                new User() { Id = 3, Name = "Pen3", Point = 10, Created = new DateTime(2023, 2, 1), Favorite = UserFavorite.Bike, },
                 new User() { Id = 4, Name = "Book4", Point = 10, Created = new DateTime(2023, 3, 1) },
                 new User() { Id = 5, Name = "Book5", Point = 10, Created = new DateTime(2023, 4, 3) },
                 new User() { Id = 6, Name = "Book6", Point = 10, Created = new DateTime(2023, 5, 3) },
@@ -68,6 +84,12 @@ namespace Api.Data
                 new Receipt() { Id = 22, Item = "Bottle", Quantity = 10, ReceiptDate = new DateTime(2023, 7, 3) },
                 new Receipt() { Id = 23, Item = "Bottle", Quantity = 10, ReceiptDate = new DateTime(2023, 7, 3) }
             );
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging(true);
+            base.OnConfiguring(optionsBuilder);
         }
 
     }

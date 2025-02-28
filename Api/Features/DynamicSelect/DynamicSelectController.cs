@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Linq.Dynamic.Core;
 using System.Reflection;
-using Api.Expressions;
+using Api.Features.DynamicSelect.Expressions;
 
 namespace Api.Features.DynamicSelect
 {

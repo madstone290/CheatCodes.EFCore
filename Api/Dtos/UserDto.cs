@@ -1,4 +1,4 @@
-﻿namespace Api.Data.Dtos
+﻿namespace Api.Dtos
 {
     public record UserDto
     {

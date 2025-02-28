@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Api.Expressions
+namespace Api.Features.DynamicSelect.Expressions
 {
     public class TypeFactory
     {
@@ -24,7 +24,7 @@ namespace Api.Expressions
             }
 
             return typeBuilder.CreateType()!;
-            
+
         }
     }
 }

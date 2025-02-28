@@ -4,14 +4,13 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 
-string connenction = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\_Home\\sources\\managed\\CheatCodes.EFCore\\Infra\\ApplicationDb.mdf;Integrated Security=True";
-
+string connection = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\_Home\\Sources\\managed\\CheatCodes.EFCore\\Infra\\Database1.mdf;Integrated Security=True";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(connenction, sqlOptions =>
+    options.UseSqlServer(connection, sqlOptions =>
     {
-
     });
+    options.UseProjectables();
 });
 
 
@@ -26,6 +25,12 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<Api.Features.Pivot.PivotService>();
+
+
+var scope = builder.Services.BuildServiceProvider().CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+context.Database.EnsureCreated();
+context.Database.Migrate();
 
 var app = builder.Build();
 

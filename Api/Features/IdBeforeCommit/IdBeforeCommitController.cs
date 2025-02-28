@@ -5,10 +5,9 @@ using System.Text;
 using System.Text.Json;
 using System.Linq.Dynamic.Core;
 using System.Reflection;
-using Api.Expressions;
-using Api.Data.Entities;
-using Api.Data.Dtos;
 using Microsoft.EntityFrameworkCore;
+using Api.Entities;
+using Api.Dtos;
 
 namespace Api.Features.DynamicSelect
 {

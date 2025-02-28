@@ -22,7 +22,97 @@ namespace Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Api.Data.Entities.Receipt", b =>
+            modelBuilder.Entity("Api.Entities.Bike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bike");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Model = "Model1",
+                            Name = "Bike1",
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Model = "Model2",
+                            Name = "Bike2",
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Model = "Model3",
+                            Name = "Bike3",
+                            Year = 2023
+                        });
+                });
+
+            modelBuilder.Entity("Api.Entities.Car", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Car");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Model = "Model1",
+                            Name = "Car1",
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Model = "Model2",
+                            Name = "Car2",
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Model = "Model3",
+                            Name = "Car3",
+                            Year = 2023
+                        });
+                });
+
+            modelBuilder.Entity("Api.Entities.Receipt", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,7 +121,6 @@ namespace Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Item")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
@@ -208,7 +297,7 @@ namespace Api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Api.Data.Entities.User", b =>
+            modelBuilder.Entity("Api.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -216,21 +305,32 @@ namespace Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("BikeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CarId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Favorite")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Point")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BikeId");
+
+                    b.HasIndex("CarId");
 
                     b.ToTable("Users");
 
@@ -239,22 +339,25 @@ namespace Api.Migrations
                         {
                             Id = 1,
                             Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Pen1",
                             Point = 10,
-                            Type = "3rd"
+                            Type = "Female"
                         },
                         new
                         {
                             Id = 2,
                             Created = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 1,
                             Name = "Pen2",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         },
                         new
                         {
                             Id = 3,
                             Created = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Pen3",
                             Point = 10,
                             Type = "3rd"
@@ -263,6 +366,7 @@ namespace Api.Migrations
                         {
                             Id = 4,
                             Created = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Book4",
                             Point = 10,
                             Type = "Male"
@@ -271,54 +375,61 @@ namespace Api.Migrations
                         {
                             Id = 5,
                             Created = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Book5",
                             Point = 10,
-                            Type = "Female"
+                            Type = "Male"
                         },
                         new
                         {
                             Id = 6,
                             Created = new DateTime(2023, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Book6",
                             Point = 10,
-                            Type = "3rd"
+                            Type = "Male"
                         },
                         new
                         {
                             Id = 7,
                             Created = new DateTime(2023, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Book7",
-                            Point = 10,
-                            Type = "3rd"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bottle1",
                             Point = 10,
                             Type = "Female"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 8,
                             Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bottle2",
+                            Favorite = 0,
+                            Name = "Bottle1",
                             Point = 10,
                             Type = "3rd"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
+                            Name = "Bottle2",
+                            Point = 10,
+                            Type = "Male"
                         },
                         new
                         {
                             Id = 10,
                             Created = new DateTime(2023, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Bottle3",
                             Point = 10,
-                            Type = "3rd"
+                            Type = "Female"
                         },
                         new
                         {
                             Id = 11,
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Bottle4",
                             Point = 10,
                             Type = "Female"
@@ -327,22 +438,25 @@ namespace Api.Migrations
                         {
                             Id = 12,
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Cup1",
                             Point = 10,
-                            Type = "3rd"
+                            Type = "Female"
                         },
                         new
                         {
                             Id = 13,
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Cup2",
                             Point = 10,
-                            Type = "Male"
+                            Type = "Female"
                         },
                         new
                         {
                             Id = 14,
                             Created = new DateTime(2023, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Cup3",
                             Point = 10,
                             Type = "3rd"
@@ -351,38 +465,43 @@ namespace Api.Migrations
                         {
                             Id = 15,
                             Created = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Pen11",
-                            Point = 10,
-                            Type = "Female"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Created = new DateTime(2023, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pen12",
-                            Point = 10,
-                            Type = "Female"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Created = new DateTime(2023, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pen13",
-                            Point = 10,
-                            Type = "3rd"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Created = new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Book11",
                             Point = 10,
                             Type = "Male"
                         },
                         new
                         {
+                            Id = 16,
+                            Created = new DateTime(2023, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
+                            Name = "Pen12",
+                            Point = 10,
+                            Type = "Male"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Created = new DateTime(2023, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
+                            Name = "Pen13",
+                            Point = 10,
+                            Type = "Male"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Created = new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
+                            Name = "Book11",
+                            Point = 10,
+                            Type = "Female"
+                        },
+                        new
+                        {
                             Id = 19,
                             Created = new DateTime(2023, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Book12",
                             Point = 10,
                             Type = "3rd"
@@ -391,22 +510,25 @@ namespace Api.Migrations
                         {
                             Id = 20,
                             Created = new DateTime(2023, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Book13",
-                            Point = 10,
-                            Type = "Female"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Created = new DateTime(2023, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Book14",
                             Point = 10,
                             Type = "Male"
                         },
                         new
                         {
+                            Id = 21,
+                            Created = new DateTime(2023, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
+                            Name = "Book14",
+                            Point = 10,
+                            Type = "Female"
+                        },
+                        new
+                        {
                             Id = 22,
                             Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Bottle11",
                             Point = 10,
                             Type = "3rd"
@@ -415,13 +537,14 @@ namespace Api.Migrations
                         {
                             Id = 23,
                             Created = new DateTime(2023, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Favorite = 0,
                             Name = "Bottle12",
                             Point = 10,
                             Type = "Female"
                         });
                 });
 
-            modelBuilder.Entity("Api.Data.Entities.UserBag", b =>
+            modelBuilder.Entity("Api.Entities.UserBag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -433,7 +556,6 @@ namespace Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OwnerId")
@@ -446,9 +568,26 @@ namespace Api.Migrations
                     b.ToTable("UserBag");
                 });
 
-            modelBuilder.Entity("Api.Data.Entities.UserBag", b =>
+            modelBuilder.Entity("Api.Entities.User", b =>
                 {
-                    b.HasOne("Api.Data.Entities.User", "Owner")
+                    b.HasOne("Api.Entities.Bike", "Bike")
+                        .WithMany()
+                        .HasForeignKey("BikeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Api.Entities.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Bike");
+
+                    b.Navigation("Car");
+                });
+
+            modelBuilder.Entity("Api.Entities.UserBag", b =>
+                {
+                    b.HasOne("Api.Entities.User", "Owner")
                         .WithMany("Bags")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -457,7 +596,7 @@ namespace Api.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("Api.Data.Entities.User", b =>
+            modelBuilder.Entity("Api.Entities.User", b =>
                 {
                     b.Navigation("Bags");
                 });
