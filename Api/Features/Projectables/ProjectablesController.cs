@@ -17,41 +17,29 @@ namespace Api.Features.Projectables
             _dbContext = dbContext;
         }
 
-
-        /// <summary>
-        /// 계산된 속성을 포함한 사용자 정보를 반환한다.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("IQueryableUsers")]
-        public IActionResult IQueryableUsers()
+        [HttpGet("Get1")]
+        public IActionResult Get1()
         {
             var users = _dbContext.Users
-                .Include(x => x.Car)
-                .Include(x => x.Bike)
-                .Include(x=> x.Bags)
-                .Select(x=> new
-            {
-                Description = x.UserDescription,
-                FavoriteDescription = x.UserFavoriteDescription,
-                AverageCapacity = x.AverageCapacityExpression ?? 0
-            })
-                .ToArray();
-            return Ok(users);
-        }
-
-        [HttpGet("IEnumerableUsers")]
-        public IActionResult IEnumerableUsers()
-        {
-            var users = _dbContext.Users
-                .Include(x => x.Car)
-                .Include(x => x.Bike)
-                .Include(x => x.Bags)
-                .AsEnumerable()
+                .Where(x=> x.FullName.Contains("abc") || x.UserDescription.Contains("bbb"))
                 .Select(x => new
                 {
                     Description = x.UserDescription,
                     FavoriteDescription = x.UserFavoriteDescription,
-                    AverageCapacity = x.AverageCapacityValue
+                    AverageCapacity = x.AverageCapacityExpression ?? 0
+                })
+                .ToArray();
+            return Ok(users);
+        }
+
+        [HttpGet("Get2")]
+        public IActionResult Get2()
+        {
+            var users = _dbContext.Users
+                .Where(x=> x.BikeDescription.Contains("abc"))
+                .Select(x => new
+                {
+                    Bike = x.BikeDescription
                 })
                 .ToArray();
             return Ok(users);
